@@ -24,7 +24,6 @@
 }
 
 .map-container {
-  background-color: red;
   height: 100vh;
   position: fixed;
   width: 100vw;
