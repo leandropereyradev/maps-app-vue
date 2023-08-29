@@ -14,12 +14,26 @@ export default defineComponent({
 
       await Promise.resolve();
 
-      new mapboxgl.Map({
+      const map = new mapboxgl.Map({
         container: mapElement.value,
         style: "mapbox://styles/mapbox/streets-v12",
         center: userLocation.value,
         zoom: 15,
       });
+
+      const customHTML = `
+        <h4>Aquí estoy</h4>
+        <p>Actualmente en Barcelona</p>
+      `;
+
+      const myLocationPopup = new mapboxgl.Popup()
+        .setLngLat(userLocation.value)
+        .setHTML(customHTML);
+
+      new mapboxgl.Marker()
+        .setLngLat(userLocation.value)
+        .setPopup(myLocationPopup)
+        .addTo(map);
     };
 
     onMounted(() => {
