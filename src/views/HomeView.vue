@@ -4,7 +4,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import usePlacesStore from '@/composables/usePlacesStore';
+import { usePlacesStore } from '@/composables';
 
 import MapView from "@/components/mapView/MapView.vue"
 

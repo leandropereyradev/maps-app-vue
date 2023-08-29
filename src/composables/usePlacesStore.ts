@@ -2,7 +2,7 @@ import { computed, onMounted } from "vue";
 import { useStore } from "vuex";
 import { StateInterface } from "@/store";
 
-const usePlacesStore = () => {
+export const usePlacesStore = () => {
   const store = useStore<StateInterface>();
 
   onMounted(() => {
@@ -22,5 +22,3 @@ const usePlacesStore = () => {
     ),
   };
 };
-
-export default usePlacesStore;
