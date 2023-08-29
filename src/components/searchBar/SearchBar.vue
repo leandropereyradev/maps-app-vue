@@ -2,7 +2,8 @@
 
 <template>
   <div class="searchbar-container">
-    <input type="text" placeholder="Burcar lugares..." class="form-control">
+    <input type="text" placeholder="Burcar lugares..." class="form-control" v-model="searchTerm">
+    {{ debounceValue }}
 
     <SearchResult />
 
