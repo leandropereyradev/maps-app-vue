@@ -6,8 +6,8 @@ export default defineComponent({
   name: "Search Result",
 
   setup() {
-    const { places, isLoadingPlaces } = usePlacesStore();
-    const { map, setPlaceMarkers } = useMapStore();
+    const { places, isLoadingPlaces, userLocation } = usePlacesStore();
+    const { map, setPlaceMarkers, getRouteBetweenPoints } = useMapStore();
 
     const activePlace = ref("");
 
@@ -31,6 +31,20 @@ export default defineComponent({
           zoom: 15,
           center: [lng, lat],
         });
+      },
+
+      getRouteDirections: (place: Feature) => {
+        if (!userLocation.value) return;
+
+        activePlace.value = place.id;
+
+        const [lng, lat] = place.center;
+        const [startLng, startLat] = userLocation.value;
+
+        const start: [number, number] = [startLng, startLat];
+        const end: [number, number] = [lng, lat];
+
+        getRouteBetweenPoints(start, end);
       },
     };
   },
