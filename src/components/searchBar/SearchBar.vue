@@ -3,7 +3,6 @@
 <template>
   <div class="searchbar-container">
     <input type="text" placeholder="Burcar lugares..." class="form-control" v-model="searchTerm">
-    {{ debounceValue }}
 
     <SearchResult />
 
@@ -20,7 +19,7 @@
   padding: 5px;
   position: fixed;
   top: 30px;
-  width: 250px;
+  width: 300px;
   z-index: 999;
 }
 </style>
