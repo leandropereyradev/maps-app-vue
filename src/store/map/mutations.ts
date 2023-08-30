@@ -36,6 +36,15 @@ const mutation: MutationTree<MapState> = {
 
       state.markers.push(newMarkers);
     }
+
+    //Borrar la Polyline al borrar la búsqueda
+    if (state.map?.getLayer("RouteString")) {
+      state.map.removeLayer("RouteString");
+      state.map.removeSource("RouteString");
+
+      state.distance = undefined;
+      state.duration = undefined;
+    }
   },
 
   setRoutePolyline(state, coords: number[][]) {
