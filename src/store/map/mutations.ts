@@ -106,6 +106,19 @@ const mutation: MutationTree<MapState> = {
       },
     });
   },
+
+  setDistanceDuration(
+    state,
+    { distance, duration }: { distance: number; duration: number }
+  ) {
+    let kms = distance / 1000;
+    kms = Math.round(kms * 100);
+    kms /= 100;
+
+    state.distance = kms;
+
+    state.duration = Math.floor(duration / 60);
+  },
 };
 
 export default mutation;
